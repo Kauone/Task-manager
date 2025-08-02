@@ -1,8 +1,15 @@
-def add_task(tasks, name_task):
-    task = {"nome": name_task, "completada": False}
+def add_task(tasks, task_name):
+    task = {"tarefa": task_name, "completada": False}
     tasks.append(task)
-    print(f"Tarefa {name_task} foi adicionada com sucesso!")
+    print(f"Tarefa {task_name} foi adicionada com sucesso!")
     return
+
+def show_tasks(tasks):
+    print("\nLista de tarefas:")
+    for index, task in enumerate(tasks, start=1):
+        status = "✓" if task["completada"] else ""
+        task_name = task["tarefa"]
+        print(f"{index}. [{status}] {task_name}")
 
 tasks = []
 while True:
@@ -17,8 +24,10 @@ while True:
     choice = input("Digite a sua escolha: ")
 
     if choice == "1":
-        name_task = input("Digite o nome da tarefa que deseja adicionar:")
-        add_task(tasks, name_task)
+        task_name = input("Digite o nome da tarefa que deseja adicionar:")
+        add_task(tasks, task_name)
+    elif choice == "2":
+        show_tasks(tasks)
     elif choice == "6":
         break
 
