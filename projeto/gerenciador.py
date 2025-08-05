@@ -27,6 +27,13 @@ def complete_task(tasks, task_index):
     print(f"Tarefa {task_index} marcada como completada")
     return
 
+def delete_completed_tasks(tasks):
+    for task in tasks:
+        if task["completada"]:
+            tasks.remove(task)
+    print("As tarefas completadas foram deletadas")    
+    return
+
 tasks = []
 while True:
     print("\nMenu do Gerenciador de Lista de tarefas:")
@@ -53,6 +60,9 @@ while True:
         show_tasks(tasks)
         task_index = input("Digite o número da tarefa que deseja completar:")
         complete_task(tasks, task_index)
+    elif choice == "5":
+        delete_completed_tasks(tasks)
+        show_tasks(tasks)
     elif choice == "6":
         break
 
